@@ -1,0 +1,16 @@
+User root
+PidFile /opt/var/run/tor.pid
+ExcludeExitNodes {RU},{UA},{AM},{KG},{BY}
+StrictNodes 1
+TransPort 192.168.1.1:9141
+ExitRelay 0
+ExitPolicy reject *:*
+ExitPolicy reject6 *:*
+GeoIPFile /opt/share/tor/geoip
+GeoIPv6File /opt/share/tor/geoip6
+DataDirectory /opt/var/lib/tor
+UseBridges 1
+ClientTransportPlugin obfs4 exec /opt/sbin/obfs4proxy managed
+Bridge obfs4 88.99.35.148:53890 25689FBD22698A133515596368D9039DF8D09CB3 cert=MfV9rlBAZL82B0iM9dFq46/2/tNC6QUxrBbb/00gI5M52+UJuLESznUgyxTbJw2PhNmLCw iat-mode=0
+Bridge obfs4 51.38.234.103:443 627B800E0808F329C387636E4C76845E9563FC81 cert=1fNc66cztDKnvBN9TmMC4wPIDxYPtuCGvHY0+9fTBpUihhLktzT7w3etlCHJDIOoOywvUg iat-mode=0
+Bridge obfs4 89.58.2.217:9292 2B5F618B70097B5052E8BF763C24F4DE41C8FF5C cert=/vO8WeCsa3iDGmulfPMaM7jKVjEPgaxrAKzyuVPmwGhp8l2KGDGbCHYjgo6zRMO3AbRgVg iat-mode=0
