@@ -144,7 +144,7 @@ def bot_message(message):
                     mylist.add(l.replace('\n', ''))
                 f.close()
                 if (message.text == "Добавить обход блокировок соцсетей"):
-                    url = "https://raw.githubusercontent.com/sysadminatr/vivvaunblock/socialnet.txt"
+                    url = "https://raw.githubusercontent.com/sysadminatr/vivvaunblock/main/socialnet.txt"
                     s = requests.get(url).text
                     lst = s.split('\n')
                     for l in lst:
