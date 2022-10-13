@@ -29,51 +29,51 @@ then
 	echo "Переменные роутера найдены"
 	# создания множеств IP-адресов unblock
 	rm -rf /opt/etc/ndm/fs.d/100-ipset.sh
-	wget --no-check-certificate -O /opt/etc/ndm/fs.d/100-ipset.sh https://raw.githubusercontent.com/sysadminatr/vivvaunblock/100-ipset.sh
+	wget --no-check-certificate -O /opt/etc/ndm/fs.d/100-ipset.sh https://raw.githubusercontent.com/sysadminatr/vivvaunblock/main/100-ipset.sh
 	chmod +x /opt/etc/ndm/fs.d/100-ipset.sh
 	sed -i "s/hash:net/${set_type}/g" /opt/etc/ndm/fs.d/100-ipset.sh
 	echo "Созданы множества IP-адресов unblock"
 
 	mkdir /opt/tmp/tor
-	wget --no-check-certificate -O /opt/etc/tor/torrc https://raw.githubusercontent.com/sysadminatr/vivvaunblock/torrc
+	wget --no-check-certificate -O /opt/etc/tor/torrc https://raw.githubusercontent.com/sysadminatr/vivvaunblock/main/torrc
 	#sed -i "s/hash:net/${set_type}/g" /opt/etc/tor/torrc
 	echo "Установлены настройки Tor"
 
-	wget --no-check-certificate -O /opt/etc/unblock.txt https://raw.githubusercontent.com/sysadminatr/vivvaunblock/unblock.txt
+	wget --no-check-certificate -O /opt/etc/unblock.txt https://raw.githubusercontent.com/sysadminatr/vivvaunblock/main/unblock.txt
 	echo "Установлены сайты и ip адреса для обхода блокировок для обоих обходов"
 
-	wget --no-check-certificate -O /opt/bin/unblock_ipset.sh https://raw.githubusercontent.com/sysadminatr/vivvaunblock/unblock_ipset.sh
+	wget --no-check-certificate -O /opt/bin/unblock_ipset.sh https://raw.githubusercontent.com/sysadminatr/vivvaunblock/main/unblock_ipset.sh
 	chmod +x /opt/bin/unblock_ipset.sh
 	echo "Установлен скрипт для заполнения множеств unblock IP-адресами заданного списка доменов"
 
-	wget --no-check-certificate -O /opt/bin/unblock_dnsmasq.sh https://raw.githubusercontent.com/sysadminatr/vivvaunblock/unblock_dnsmasq.sh
+	wget --no-check-certificate -O /opt/bin/unblock_dnsmasq.sh https://raw.githubusercontent.com/sysadminatr/vivvaunblock/main/unblock_dnsmasq.sh
 	chmod +x /opt/bin/unblock_dnsmasq.sh
 	unblock_dnsmasq.sh
 	echo "Установлен скрипт для формирования дополнительного конфигурационного файла dnsmasq из заданного списка доменов и его запуск"
 
-	wget --no-check-certificate -O /opt/bin/unblock_update.sh https://raw.githubusercontent.com/sysadminatr/vivvaunblock/unblock_update.sh
+	wget --no-check-certificate -O /opt/bin/unblock_update.sh https://raw.githubusercontent.com/sysadminatr/vivvaunblock/main/unblock_update.sh
 	chmod +x /opt/bin/unblock_update.sh
 	echo "Установлен скрипт ручного принудительного обновления системы после редактирования списка доменов"
 
-	wget --no-check-certificate -O /opt/etc/init.d/S99unblock https://raw.githubusercontent.com/sysadminatr/vivvaunblock/S99unblock
+	wget --no-check-certificate -O /opt/etc/init.d/S99unblock https://raw.githubusercontent.com/sysadminatr/vivvaunblock/main/S99unblock
 	chmod +x /opt/etc/init.d/S99unblock
 	#sed -i "s/hash:net/${set_type}/g" /opt/etc/init.d/S99unblock
 	#sed -i "s/192.168.1.1/${lanip}/g" /opt/etc/init.d/S99unblock
 	echo "Установлен cкрипт автоматического заполнения множества unblock при загрузке маршрутизатора"
 
-	wget --no-check-certificate -O /opt/etc/ndm/netfilter.d/100-redirect.sh https://raw.githubusercontent.com/sysadminatr/vivvaunblock/100-redirect.sh
+	wget --no-check-certificate -O /opt/etc/ndm/netfilter.d/100-redirect.sh https://raw.githubusercontent.com/sysadminatr/vivvaunblock/main/100-redirect.sh
 	chmod +x /opt/etc/ndm/netfilter.d/100-redirect.sh
 	sed -i "s/hash:net/${set_type}/g" /opt/etc/ndm/netfilter.d/100-redirect.sh
 	sed -i "s/192.168.1.1/${lanip}/g" /opt/etc/ndm/netfilter.d/100-redirect.sh
 	echo "Установлено перенаправление пакетов с адресатами из unblock в Tor"
 
 	rm -rf /opt/etc/dnsmasq.conf
-	wget --no-check-certificate -O /opt/etc/dnsmasq.conf https://raw.githubusercontent.com/sysadminatr/vivvaunblock/dnsmasq.conf
+	wget --no-check-certificate -O /opt/etc/dnsmasq.conf https://raw.githubusercontent.com/sysadminatr/vivvaunblock/main/dnsmasq.conf
 	sed -i "s/192.168.1.1/${lanip}/g" /opt/etc/dnsmasq.conf
 	echo "Установлена настройка dnsmasq и подключение дополнительного конфигурационного файла к dnsmasq"
 
 	rm -rf /opt/etc/crontab
-	wget --no-check-certificate -O /opt/etc/crontab https://raw.githubusercontent.com/sysadminatr/vivvaunblock/crontab
+	wget --no-check-certificate -O /opt/etc/crontab https://raw.githubusercontent.com/sysadminatr/vivvaunblock/main/crontab
 	echo "Установлено добавление задачи в cron для периодического обновления содержимого множества"
 	ndmq -p 'opkg dns-override'
 	ndmq -p 'system configuration save'
