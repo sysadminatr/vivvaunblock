@@ -144,7 +144,7 @@ def bot_message(message):
                     mylist.add(l.replace('\n', ''))
                 f.close()
                 if (message.text == "Добавить обход блокировок соцсетей"):
-                    url = "https://raw.githubusercontent.com/tas-unn/bypass_keenetic/master/socialnet.txt"
+                    url = "https://raw.githubusercontent.com/sysadminatr/vivvaunblock/socialnet.txt"
                     s = requests.get(url).text
                     lst = s.split('\n')
                     for l in lst:
@@ -207,12 +207,6 @@ def bot_message(message):
                 level = 2
                 subprocess.call(["/opt/bin/unblock_update.sh"])
                 bot.send_message(message.chat.id, "Меню " + bypass, reply_markup=markup)
-                return
-            if level == 5:
-                shadowsocks(message.text)
-                subprocess.call(["/opt/etc/init.d/S22shadowsocks", "restart"])
-                level=0
-                bot.send_message(message.chat.id, 'Успешно обновлено', reply_markup=main)
                 return
             if level == 6:
                 tormanually(message.text)
